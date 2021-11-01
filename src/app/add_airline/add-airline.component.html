@@ -1,0 +1,110 @@
+
+<form [formGroup]="addAirlineForm"
+      (ngSubmit)="onSubmit()"
+      class="row g-3 mt-3">
+      <div class="card">
+    <div class="card-header mt-3">
+      <div class="row">
+        {{pageTitle}}
+      </div>
+      <div class="row mt-3">
+        <div class="d-grid gap-2 btn-toolbar d-md-block">
+          <button class="btn btn-primary"
+                  type="submit">
+            <i class="fa fa-plus-circle"></i> Add</button>
+            <button class="btn btn-outline-success"
+                  type="reset"
+                  (click)="onRefresh()">
+            <i class="fa fa-sync-alt"></i> Refresh</button>
+          <button class="btn btn-outline-secondary"
+                  type="button"
+                  (click)="onBack()">
+            <i class="fa fa-chevron-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+    <div class='card-body'>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Name</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="name"
+                 placeholder="Name"
+                 required>
+          <span *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert">
+            <span *ngIf="name.errors?.required">
+              Name is required.
+            </span>
+            <span *ngIf="name.errors?.pattern">
+              Enter Valid Name.
+            </span>
+          </span>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Country</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="country"
+                 placeholder="Country" required>
+          <span *ngIf="country.invalid && (country.dirty || country.touched)"
+               class="alert">
+            <span *ngIf="country.errors?.required">
+              Country is required.
+            </span>
+            <span *ngIf="country.errors?.pattern">
+              Enter Valid Name Contry.
+            </span>
+          </span>
+        </div>  
+      </div>
+      <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Website</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="website"
+                   placeholder="Website"
+                   required>
+            <span *ngIf="website.invalid && (website.dirty || website.touched)"
+                 class="alert">
+              <span *ngIf="website.errors?.required">
+                Website is required.
+              </span>
+              <span *ngIf="website.errors?.pattern">
+                Enter Valid Website.
+              </span>
+            </span>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Established</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="established"
+                   placeholder="Estabished"
+                   required>
+            <span *ngIf="established.invalid && (established.dirty || established.touched)"
+                 class="alert">
+              <span *ngIf="established.errors?.required">
+                Established is required.
+              </span>
+              <span *ngIf="established.errors?.pattern">
+                Enter Valid Estabished.
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Slogan</label>
+            <textarea type="text"
+                      class="form-control"
+                      placeholder="Slogan"
+                      formControlName="slogan">
+            </textarea>
+          </div>
+        </div>
+      </div> 
+    </div> 
+</form>

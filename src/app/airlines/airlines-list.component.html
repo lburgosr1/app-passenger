@@ -1,0 +1,64 @@
+<div calss="card">
+    <div class="card-header mt-3">
+        <div class="row">
+            <div class="col-md-10">
+                {{pageTitle}}
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary"
+                        [routerLink]="'/add-airline'">
+                    Add Airline
+                </button>
+            </div>
+        </div>
+    </div>
+    <div clas='card-body'>
+        <div class="table-responsive">
+            <app-loading [loading]="isLoading"></app-loading>
+            <table [hidden]="isLoading" class="table" *ngIf='airlines.length'>
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary"
+                                    (click)="toggleImage()">
+                                {{showImage ? "Hide" : 'Show'}} Image
+                            </button>
+                        </th>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Slogan</th>
+                        <th>Website</th>
+                        <th>Established</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let airline of airlines">
+                        <td>
+                            <img *ngIf="showImage && airline.logo"
+                                 [src]=" airline.logo"
+                                 [title]="airline.name">
+                        </td>
+                        <td>
+                            <a [routerLink]="['/airlines', airline.id]">{{airline.name}}</a>
+                        </td>
+                        <td>{{airline.country}}</td>
+                        <td>{{airline.slogan}}</td>
+                        <td>{{airline.website}}</td>
+                        <td>{{airline.established}}</td>
+                        <td class="overflow-hidden">
+                            <div ngbDropdown container="body">
+                                <a ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></a>
+                                <div ngbDropdownMenu
+                                    aria-labelledby="dropdownBasic1">
+                                    <a ngbDropdownItem
+                                    (click)="view(airline)"><i class="fa fa-eye"></i>
+                                        View</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

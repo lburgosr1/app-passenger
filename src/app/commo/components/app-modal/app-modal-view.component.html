@@ -1,0 +1,41 @@
+<div class="modal-header mt-3">
+    <h4>{{airline.name}}</h4>
+</div>
+<div class='modal-body'>
+    <div class='row'>
+        <div class='row mb-2'>
+            <div class='col-md-4'>Name:</div>
+            <div class='col-md-8'>{{airline.name}}</div>
+        </div>
+        <div class='row mb-2'>
+            <div class='col-md-4'>Country:</div>
+            <div class='col-md-8'>{{airline.country}}</div>
+        </div>
+        <div class='row mb-2'>
+            <div class='col-md-4'>Slogan:</div>
+            <div class='col-md-8'>{{airline.slogan}}</div>
+        </div>
+        <div class='row mb-2'>
+            <div class='col-md-4'>Website:</div>
+            <div class='col-md-8'>{{airline.website}}</div>
+        </div>
+        <div class="row mb-2">
+            <div class='col-md-4'>Estabished:</div>
+            <div class='col-md-8'>{{airline.established}}</div>
+        </div>
+        <div class='row mb-2'>
+            <div class="col-md-4">Logo:</div>
+            <div class='col-md-8'>
+                <img class='center-block img-fluid'
+                        [style.width.px]='200'
+                        [style.margin.px]='2'
+                        [src]='airline.logo'
+                        [title]='airline.name'>
+            </div>
+        </div>
+        <div class="modal-footer ng-scope">
+            <button class="btn btn-outline-primary col-md-2"
+                    (click)="cancel()">Back</button>
+        </div>
+    </div>
+</div>

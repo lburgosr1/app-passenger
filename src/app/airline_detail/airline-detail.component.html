@@ -1,0 +1,42 @@
+<div calss="card" >
+    <div class="card-header mt-3">
+        {{pageTitle + ': ' + airlines[0].name}}
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-4'>Name:</div>
+                    <div class='col-md-8'>{{airlines[0].name}}</div> 
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Country:</div>
+                    <div class='col-md-8'>{{airlines[0].country}}</div> 
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Slogan:</div>
+                    <div class='col-md-8'>{{airlines[0].slogan}}</div>
+                <div class='row'>
+                    <div class='col-md-4'>Website:</div> 
+                    <div class='col-md-8'>{{airlines[0].website}}</div>
+                <div class="row">
+                    <div class='col-md-4'>Estabished:</div>
+                    <div class='col-md-8'>{{airlines[0].established}}</div> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class='col-md-8'>
+                    <img class='center-block img-fluid'
+                        [style.width.px]='200'
+                        [style.margin.px]='2'
+                        [src]='airlines[0].logo'
+                        [title]='airlines[0].name'>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <button class="btn btn-outline-secondary" (click)="onBack()">
+           <i class="fa fa-chevron-left"></i> Back</button>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div calss="card">
+    <div class="card-header mt-3">
+        <div class="row">
+            <div class="col-md-10">
+                {{pageTitle}}
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" [routerLink]="'/add-passenger'">
+                    Add Passenger
+                </button>
+            </div>
+        </div>
+    </div>
+    <div clas='card-body'>
+        <div class="table-responsive overflow-hidden" >
+
+            <app-loading [loading]="isLoading" ></app-loading> 
+            
+            <table [hidden]="isLoading" class="table" *ngIf='passengers.length'>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Trips</th>
+                        <th>Airline</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr *ngFor="let passenger of passengers">
+                        <td>
+                            <a [routerLink]="['/passenger', passenger._id]">{{passenger.name}}</a>
+                        </td>
+                        <td>{{passenger.trips}}</td>
+                        <td>{{passenger.airline[0].name}}</td>
+                        <td class="overflow-hidden">   
+                            <div ngbDropdown container="body">
+                                <a ngbDropdownToggle tabindex="0" id="navbarDropdown1" role="button"><i class="fa fa-ellipsis-v"></i></a>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <a ngbDropdownItem [routerLink]="['/passenger', passenger._id]"><i class="fa fa-eye"></i> View</a>
+                                    <a ngbDropdownItem (click)="delete(passenger._id, passenger)"><i class="fa fa-trash"></i> Delete</a>
+                                </div> 
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="totalPage"
+                class="d-flex justify-content-end inline-block"
+                [maxSize]="5"
+                (pageChange)="loadPage($event)"
+                > 
+            </ngb-pagination>
+    </div>
+</div>

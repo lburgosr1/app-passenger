@@ -1,0 +1,77 @@
+<form
+      #passengerForm="ngForm"
+      class="row g-3 mt-3">
+      <div class="card">
+        <div class="card-header mt-3">
+          <div class="row">
+            {{pageTitle}}
+          </div>
+          <div class="row mt-3">
+            <div class="d-grid gap-2 btn-toolbar d-md-block">
+              <button [ngClass]="btnColor"
+                      type="submit"
+                      (click)="addEditPassenger(passengerForm)">
+                <i [ngClass]="btnIcon"></i> {{nameButton}}</button>
+
+                <button class="btn btn-outline-success"
+                      type="reset"
+                      (click)="passengerForm.resetForm()">
+                      <i class="fa fa-retweet"></i> Refresh</button>
+              <button class="btn btn-outline-secondary"
+                      type="button"
+                      (click)="onBack()">
+                <i class="fa fa-chevron-left"></i> Back</button>
+            </div>
+          </div>
+        </div>
+        <div class='card-body'>
+          <div class="form-group row mb-3">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text"
+                    class="form-control"
+                    placeholder="Name"
+                    name="name"
+                    #name="ngModel"
+                    id="name"
+                    pattern="^[a-zA-ZñÑá-úÁ-Ú _]*"
+                    [(ngModel)]="passenger.name"
+                    required
+                    minlength="3">
+                    <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                      <span class="alert" *ngIf="name.errors?.required">Name Requiered</span>
+                      <span class="alert" *ngIf="name.errors?.minlength">Name should be minimum 3 caracters</span> 
+                      <span *ngIf="name.errors?.pattern">Enter a valid name</span> 
+                    </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Trips</label>
+              <input type="number"
+                    class="form-control"
+                    placeholder="Trips" 
+                    name="trips"
+                    #trips="ngModel"
+                    [(ngModel)]="passenger.trips"
+                    required
+                    minlength="3">
+                    <div class="alert alert-danger" *ngIf="trips.touched && !trips.valid">
+                      <span *ngIf="trips.errors?.required">Trips Requiered</span>
+                    </div>
+            </div>  
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label">Airline</label>
+              <select class="form-select"
+                      name="id"
+                      #id="ngModel"
+                      [(ngModel)]="selectedAirlineId"
+                      required>
+                <option value=0 disabled selected>-Seleccionar Aerolinea-</option>
+                <option *ngFor="let airline of airlines" [ngValue]="airline.id">{{airline.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div> 
+    </div>
+</form>

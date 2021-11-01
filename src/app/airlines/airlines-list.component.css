@@ -1,0 +1,13 @@
+thead{
+    color: #337ab7;
+}
+img{
+    width: 50px;
+    margin: 2px;
+}
+a:hover{
+    text-decoration: none;
+}
+.dropdown-toggle::after{
+    display: none;
+}
